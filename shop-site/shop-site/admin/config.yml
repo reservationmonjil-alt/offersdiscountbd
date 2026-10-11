@@ -1,0 +1,199 @@
+# অ্যাডমিন প্যানেল (Decap CMS)। README দেখে YOUR-GITHUB-USER/YOUR-REPO বদলান।
+backend:
+  name: github
+  repo: YOUR-GITHUB-USER/YOUR-REPO
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+locale: bn
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: settings
+    label: সাইট সেটিংস, নোটিশ ও ব্যানার
+    files:
+      - name: settings
+        label: সাইট নিয়ন্ত্রণ
+        file: data/settings.json
+        format: json
+        fields:
+          - { label: সাইটের নাম, name: name, widget: string }
+          - { label: ট্যাগলাইন, name: tagline, widget: string }
+          - { label: সাইটের ঠিকানা (https://example.com), name: siteUrl, widget: string }
+          - { label: ইমেইল, name: email, widget: string, required: false }
+          - { label: Facebook লিংক, name: facebook, widget: string, required: false }
+          - { label: YouTube লিংক, name: youtube, widget: string, required: false }
+          - { label: Google Analytics ID (G-XXXX), name: analyticsId, widget: string, required: false }
+          - { label: Google Search Console ভেরিফিকেশন কোড, name: googleVerification, widget: string, required: false }
+          - { label: Bing Webmaster ভেরিফিকেশন কোড, name: bingVerification, widget: string, required: false }
+          - label: নোটিশ বার
+            name: notice
+            widget: object
+            fields:
+              - { label: দেখাবো কি?, name: enabled, widget: boolean, default: true }
+              - { label: লেখা, name: text, widget: string }
+              - { label: লিংক, name: link, widget: string, required: false }
+              - { label: লিংকের লেখা, name: linkText, widget: string, required: false }
+          - label: মূল ব্যানার (স্লাইডার)
+            name: banners
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: শিরোনাম, name: title, widget: string }
+              - { label: বিবরণ, name: subtitle, widget: string }
+              - { label: বাটনের লেখা, name: button, widget: string, required: false }
+              - { label: বাটনের লিংক, name: link, widget: string, required: false }
+              - { label: রঙ ১, name: color1, widget: color, default: "#F85606" }
+              - { label: রঙ ২, name: color2, widget: color, default: "#B93A00" }
+              - { label: ব্যানার ছবি (দিলে রঙ কাজ করবে না), name: image, widget: image, required: false }
+          - label: পাশের ছোট ব্যানার (২টি)
+            name: tiles
+            widget: list
+            max: 2
+            summary: "{{fields.title}}"
+            fields:
+              - { label: শিরোনাম, name: title, widget: string }
+              - { label: ছোট লেখা, name: subtitle, widget: string }
+              - { label: লিংক, name: link, widget: string }
+              - { label: রঙ ১, name: color1, widget: color, default: "#FFB703" }
+              - { label: রঙ ২, name: color2, widget: color, default: "#F77F00" }
+              - { label: ছবি, name: image, widget: image, required: false }
+          - label: ফ্ল্যাশ সেল
+            name: flash
+            widget: object
+            fields:
+              - { label: চালু?, name: enabled, widget: boolean, default: true }
+              - { label: শিরোনাম, name: title, widget: string }
+              - { label: শেষ হওয়ার সময় (যেমন 2026-10-31T23:59:00+06:00), name: endsAt, widget: string }
+          - label: ক্যাটাগরি
+            name: categories
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: নাম, name: name, widget: string }
+              - { label: ইংরেজি স্লাগ (ছোট হাতের অক্ষর ও হাইফেন), name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'শুধু a-z, 0-9 ও -'] }
+              - { label: আইকন, name: icon, widget: select, options: [phone, tv, laptop, home, shirt, bag, heart, toy, ball] }
+
+  - name: products
+    label: প্রোডাক্ট
+    files:
+      - name: products
+        label: সব প্রোডাক্ট
+        file: data/products.json
+        format: json
+        fields:
+          - label: প্রোডাক্ট তালিকা
+            name: items
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: নাম, name: title, widget: string }
+              - { label: ইংরেজি স্লাগ (URL), name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'শুধু a-z, 0-9 ও -'] }
+              - { label: ক্যাটাগরি স্লাগ, name: category, widget: string }
+              - { label: ব্র্যান্ড, name: brand, widget: string, required: false }
+              - { label: বর্তমান দাম, name: price, widget: number, value_type: int }
+              - { label: আগের দাম, name: oldPrice, widget: number, value_type: int, required: false }
+              - { label: রেটিং (১-৫, প্ল্যাটফর্ম থেকে আসল সংখ্যা), name: rating, widget: number, value_type: float, min: 1, max: 5, required: false }
+              - { label: ফ্ল্যাশ সেলে দেখাবো?, name: flash, widget: boolean, default: false }
+              - label: ছবি (প্রথমটি মূল ছবি)
+                name: images
+                widget: list
+                required: false
+                field: { label: ছবি, name: image, widget: image }
+              - label: মূল বৈশিষ্ট্য
+                name: highlights
+                widget: list
+                required: false
+                field: { label: বৈশিষ্ট্য, name: h, widget: string }
+              - label: স্পেসিফিকেশন
+                name: specs
+                widget: list
+                required: false
+                fields:
+                  - { label: নাম, name: k, widget: string }
+                  - { label: মান, name: v, widget: string }
+              - { label: বিবরণ (অনুচ্ছেদের মাঝে ফাঁকা লাইন), name: description, widget: text }
+              - { label: অ্যাফিলিয়েট লিংক, name: link, widget: string }
+              - { label: সর্বশেষ আপডেট (YYYY-MM-DD), name: updated, widget: string, required: false }
+
+  - name: courses
+    label: কোর্স
+    files:
+      - name: courses
+        label: সব কোর্স
+        file: data/courses.json
+        format: json
+        fields:
+          - label: কোর্স তালিকা
+            name: items
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: নাম, name: title, widget: string }
+              - { label: ইংরেজি স্লাগ, name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'শুধু a-z, 0-9 ও -'] }
+              - { label: প্রোভাইডার, name: provider, widget: string }
+              - { label: টপিক, name: category, widget: string }
+              - { label: দাম, name: price, widget: number, value_type: int }
+              - { label: আগের দাম, name: oldPrice, widget: number, value_type: int, required: false }
+              - { label: রেটিং, name: rating, widget: number, value_type: float, min: 1, max: 5, required: false }
+              - { label: লেভেল, name: level, widget: string }
+              - { label: সময়কাল, name: duration, widget: string }
+              - { label: ভাষা, name: language, widget: string, default: বাংলা }
+              - label: ছবি
+                name: images
+                widget: list
+                required: false
+                field: { label: ছবি, name: image, widget: image }
+              - label: যা শিখবেন
+                name: learn
+                widget: list
+                required: false
+                field: { label: বিষয়, name: l, widget: string }
+              - { label: বিবরণ, name: description, widget: text }
+              - { label: অ্যাফিলিয়েট লিংক, name: link, widget: string }
+              - { label: সর্বশেষ আপডেট (YYYY-MM-DD), name: updated, widget: string, required: false }
+
+  - name: posts
+    label: ব্লগ
+    files:
+      - name: posts
+        label: সব ব্লগ পোস্ট
+        file: data/posts.json
+        format: json
+        fields:
+          - label: পোস্ট তালিকা
+            name: items
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: শিরোনাম, name: title, widget: string }
+              - { label: ইংরেজি স্লাগ, name: slug, widget: string, pattern: ['^[a-z0-9-]+$', 'শুধু a-z, 0-9 ও -'] }
+              - { label: ক্যাটাগরি, name: category, widget: string }
+              - { label: তারিখ (YYYY-MM-DD), name: date, widget: string }
+              - { label: লেখক, name: author, widget: string, required: false }
+              - { label: ছবি, name: image, widget: image, required: false }
+              - { label: সারসংক্ষেপ, name: excerpt, widget: text }
+              - label: উল্লিখিত প্রোডাক্টের স্লাগ
+                name: related
+                widget: list
+                required: false
+                field: { label: স্লাগ, name: s, widget: string }
+              - { label: পুরো লেখা (## দিয়ে উপশিরোনাম, - দিয়ে তালিকা, ফাঁকা লাইনে নতুন অনুচ্ছেদ), name: body, widget: text }
+
+  - name: pages
+    label: স্ট্যাটিক পেজ
+    files:
+      - name: pages
+        label: আমাদের সম্পর্কে, নীতি ও যোগাযোগ
+        file: data/pages.json
+        format: json
+        fields:
+          - label: পেজ তালিকা
+            name: items
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: শিরোনাম, name: title, widget: string }
+              - { label: স্লাগ (about, disclosure, privacy, contact), name: slug, widget: string }
+              - { label: লেখা, name: body, widget: text }

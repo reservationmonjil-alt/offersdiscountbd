@@ -1,0 +1,116 @@
+{
+  "name": "সেরা ডিল",
+  "tagline": "বাংলাদেশের বাছাই করা অনলাইন ডিল ও কোর্স",
+  "siteUrl": "https://YOUR-SITE.netlify.app",
+  "email": "hello@example.com",
+  "facebook": "https://facebook.com/",
+  "youtube": "https://youtube.com/",
+  "analyticsId": "",
+  "notice": {
+    "enabled": true,
+    "text": "বিশেষ অফার সপ্তাহ চলছে, বাছাই করা প্রোডাক্টে ছাড় দেখুন।",
+    "link": "/#flash",
+    "linkText": "অফারগুলো দেখুন"
+  },
+  "banners": [
+    {
+      "title": "আজকের সেরা ডিল, এক জায়গায় বাছাই করা",
+      "subtitle": "গ্যাজেট, হোম, ফ্যাশন ও আরও, দাম মিলিয়ে দেখে নেওয়া অফার।",
+      "button": "ডিল দেখুন",
+      "link": "/deals/",
+      "color1": "#F85606",
+      "color2": "#B93A00",
+      "image": ""
+    },
+    {
+      "title": "ঘরে বসে স্কিল শিখুন, ক্যারিয়ার গড়ুন",
+      "subtitle": "ফ্রিল্যান্সিং, ওয়েব, ডিজাইন ও মার্কেটিংয়ের কোর্স তুলনা করুন।",
+      "button": "কোর্স দেখুন",
+      "link": "/courses/",
+      "color1": "#2B3A8C",
+      "color2": "#141B4D",
+      "image": ""
+    },
+    {
+      "title": "কেনার আগে পড়ুন রিভিউ ও গাইড",
+      "subtitle": "কোনটা কিনবেন, কোনটা এড়াবেন, সহজ ভাষায় পরামর্শ।",
+      "button": "ব্লগ পড়ুন",
+      "link": "/blog/",
+      "color1": "#0F7B6C",
+      "color2": "#09483F",
+      "image": ""
+    }
+  ],
+  "tiles": [
+    {
+      "title": "ফ্ল্যাশ সেল",
+      "subtitle": "সীমিত সময়ের ছাড়",
+      "link": "/#flash",
+      "color1": "#FFB703",
+      "color2": "#F77F00",
+      "image": ""
+    },
+    {
+      "title": "নতুন কোর্স",
+      "subtitle": "স্কিল বাড়ান আজই",
+      "link": "/courses/",
+      "color1": "#7B2CBF",
+      "color2": "#3C096C",
+      "image": ""
+    }
+  ],
+  "flash": {
+    "enabled": true,
+    "title": "ফ্ল্যাশ সেল",
+    "endsAt": "2026-10-31T23:59:00+06:00"
+  },
+  "categories": [
+    {
+      "slug": "mobile-gadgets",
+      "name": "মোবাইল ও গ্যাজেট",
+      "icon": "phone"
+    },
+    {
+      "slug": "electronics",
+      "name": "ইলেকট্রনিক্স",
+      "icon": "tv"
+    },
+    {
+      "slug": "computers",
+      "name": "কম্পিউটার ও ল্যাপটপ",
+      "icon": "laptop"
+    },
+    {
+      "slug": "home-kitchen",
+      "name": "হোম ও কিচেন",
+      "icon": "home"
+    },
+    {
+      "slug": "mens-fashion",
+      "name": "পুরুষের ফ্যাশন",
+      "icon": "shirt"
+    },
+    {
+      "slug": "womens-fashion",
+      "name": "নারীর ফ্যাশন",
+      "icon": "bag"
+    },
+    {
+      "slug": "beauty-health",
+      "name": "বিউটি ও হেলথ",
+      "icon": "heart"
+    },
+    {
+      "slug": "kids-toys",
+      "name": "বাচ্চা ও খেলনা",
+      "icon": "toy"
+    },
+    {
+      "slug": "sports-travel",
+      "name": "স্পোর্টস ও ট্রাভেল",
+      "icon": "ball"
+    }
+  ],
+  "googleVerification": "",
+  "bingVerification": ""
+}
