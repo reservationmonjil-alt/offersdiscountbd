@@ -15,7 +15,7 @@
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600"
 
 [[headers]]
   for = "/search-index.json"
@@ -25,4 +25,10 @@
 [[headers]]
   for = "/go/*"
   [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-cache"
     X-Robots-Tag = "noindex, nofollow"

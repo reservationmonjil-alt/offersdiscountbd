@@ -1,10 +1,13 @@
-# অ্যাডমিন প্যানেল (Decap CMS)। README দেখে YOUR-GITHUB-USER/YOUR-REPO বদলান।
+# অ্যাডমিন প্যানেল (Decap CMS)। লগইনের জন্য README-এর OAuth ধাপ দেখুন।
 backend:
   name: github
-  repo: YOUR-GITHUB-USER/YOUR-REPO
+  repo: reservationmonjil-alt/offersdiscountbd
   branch: main
   base_url: https://api.netlify.com
   auth_endpoint: auth
+  site_domain: adminofmonjil.netlify.app
+site_url: https://adminofmonjil.netlify.app
+display_url: https://adminofmonjil.netlify.app
 locale: bn
 media_folder: "uploads"
 public_folder: "/uploads"

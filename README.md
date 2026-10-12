@@ -5,13 +5,15 @@
 ## অনলাইন করা (Netlify, ফ্রি)
 1. এই ফোল্ডারের সব ফাইল একটি GitHub রিপোজিটরিতে আপলোড করুন।
 2. Netlify > Add new site > Import from Git। সেটিংস `netlify.toml` থেকে নিজে আসবে (Build command: `node build.js`, Publish directory: `dist`)।
-3. `data/settings.json`-এ `siteUrl` নিজের আসল ঠিকানা দিন, নইলে canonical ও sitemap ভুল হবে।
+3. `data/settings.json`-এ `siteUrl` সাইটের আসল ঠিকানা (কাস্টম ডোমেইন নিলে সেটি) দিন, নইলে canonical ও sitemap ভুল হবে।
 
 ## অ্যাডমিন প্যানেল (`/admin`)
-1. `admin/config.yml`-এ `YOUR-GITHUB-USER/YOUR-REPO` বদলান।
-2. GitHub > Settings > Developer settings > OAuth Apps > New OAuth App। Callback URL: `https://api.netlify.com/auth/done`
-3. Netlify > Site configuration > Access & security > OAuth > Install provider (GitHub), Client ID ও Secret বসান।
-4. `আপনার-সাইট/admin`-এ GitHub দিয়ে লগইন করুন।
+রিপো (`reservationmonjil-alt/offersdiscountbd`) ও সাইটের ঠিকানা `admin/config.yml`-এ আগেই বসানো আছে। লগইন চালু করতে একবার এই কাজটি করুন:
+1. GitHub > Settings > Developer settings > OAuth Apps > New OAuth App।
+   - Homepage URL: `https://adminofmonjil.netlify.app`
+   - Authorization callback URL: `https://api.netlify.com/auth/done`
+2. Netlify > Project configuration > Access & security > OAuth > Install provider > GitHub, Client ID ও Client Secret বসান।
+3. `https://adminofmonjil.netlify.app/admin/`-এ গিয়ে "Login with GitHub" চাপুন। রিপোতে write অ্যাক্সেস আছে এমন GitHub অ্যাকাউন্ট দিয়েই লগইন করা যাবে।
 
 সেভ করলে Netlify নিজে সাইট রিবিল্ড করে (১–২ মিনিট)। এখান থেকে নিয়ন্ত্রণ করা যায়: নোটিশ বার, ব্যানার, ফ্ল্যাশ সেল ও টাইমার, ক্যাটাগরি, প্রোডাক্ট, কোর্স, ব্লগ, স্ট্যাটিক পেজ।
 

@@ -311,7 +311,7 @@ const red = [];
 PR.forEach(p => { if (/^https?:\/\//.test(p.link || '')) red.push(`/go/p/${p._s}  ${p.link}  302`); });
 CR.forEach(c => { if (/^https?:\/\//.test(c.link || '')) red.push(`/go/c/${c._s}  ${c.link}  302`); });
 put('_redirects', red.join('\n') + '\n');
-put('_headers', '/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/go/*\n  X-Robots-Tag: noindex, nofollow\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
+put('_headers', '/assets/*\n  Cache-Control: public, max-age=3600\n/go/*\n  X-Robots-Tag: noindex, nofollow\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n');
 
 fs.rmSync(OUT, { recursive: true, force: true });
 for (const [p, c] of files) { const f = path.join(OUT, p); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, c); }
